@@ -1,0 +1,3 @@
+"""OpenAlex CLI - Command-line interface for the OpenAlex API."""
+
+__version__ = "0.1.0"
