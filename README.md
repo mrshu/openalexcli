@@ -8,6 +8,18 @@ Command-line interface for the [OpenAlex API](https://openalex.org/).
 pip install openalexcli
 ```
 
+Or with uv:
+
+```bash
+uv pip install openalexcli
+```
+
+Or run directly without installing:
+
+```bash
+uvx openalexcli search "machine learning"
+```
+
 For development:
 
 ```bash
