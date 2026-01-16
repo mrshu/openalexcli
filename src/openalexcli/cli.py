@@ -9,8 +9,8 @@ from typing import Annotated, Optional
 import typer
 from rich.console import Console
 
-from openalexq.api import OpenAlexAPI, APIError
-from openalexq.formatters import (
+from openalexcli.api import OpenAlexAPI, APIError
+from openalexcli.formatters import (
     format_bibtex,
     format_works_bibtex,
     format_json,
@@ -28,7 +28,7 @@ from openalexq.formatters import (
 
 # CLI app
 app = typer.Typer(
-    name="openalexq",
+    name="openalexcli",
     help="Command-line interface for the OpenAlex API",
     no_args_is_help=True,
 )

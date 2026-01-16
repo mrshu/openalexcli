@@ -1,4 +1,4 @@
-"""Tests for openalexq CLI.
+"""Tests for openalexcli CLI.
 
 Covers:
 - ID normalization for different entity types
@@ -10,14 +10,14 @@ Covers:
 import pytest
 from unittest.mock import Mock, patch
 
-from openalexq.api.client import OpenAlexAPI, DEFAULT_WORK_FIELDS
-from openalexq.formatters.bibtex import (
+from openalexcli.api.client import OpenAlexAPI, DEFAULT_WORK_FIELDS
+from openalexcli.formatters.bibtex import (
     format_bibtex,
     _generate_citation_key,
     _reconstruct_abstract,
     _escape_latex,
 )
-from openalexq.formatters.json_fmt import format_json
+from openalexcli.formatters.json_fmt import format_json
 
 
 # =============================================================================

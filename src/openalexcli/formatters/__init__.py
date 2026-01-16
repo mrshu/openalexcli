@@ -1,8 +1,8 @@
 """Output formatters for OpenAlex CLI."""
 
-from openalexq.formatters.bibtex import format_bibtex, format_works_bibtex
-from openalexq.formatters.json_fmt import format_json, format_error_json
-from openalexq.formatters.table import (
+from openalexcli.formatters.bibtex import format_bibtex, format_works_bibtex
+from openalexcli.formatters.json_fmt import format_json, format_error_json
+from openalexcli.formatters.table import (
     format_works_table,
     format_authors_table,
     format_institutions_table,

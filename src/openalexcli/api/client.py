@@ -145,7 +145,7 @@ class OpenAlexAPI:
         """Lazy initialization of HTTP client."""
         if self._client is None:
             headers = {
-                "User-Agent": "openalexq/0.1.0 (https://github.com/mrshu/openalexq)",
+                "User-Agent": "openalexcli/0.1.0 (https://github.com/mrshu/openalexcli)",
             }
             if self.email:
                 headers["mailto"] = self.email
