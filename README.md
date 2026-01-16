@@ -1,6 +1,6 @@
 # openalexcli
 
-Command-line interface for the [OpenAlex API](https://openalex.org/), designed for both human researchers and AI agents.
+A CLI for [OpenAlex API](https://openalex.org/) - designed for humans and AI agents.
 
 ## Installation
 
