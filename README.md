@@ -131,7 +131,7 @@ The CLI automatically selects the best output format:
 - **Terminal**: Human-readable tables (using Rich)
 - **Piped output**: Compact JSON for machine consumption
 - **--json**: Force JSON output
-- **--bibtex**: BibTeX citations (works only)
+- **--bibtex**: BibTeX format (for works/publications only)
 
 ## Polite Pool
 
