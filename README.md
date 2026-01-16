@@ -5,6 +5,12 @@ Command-line interface for the [OpenAlex API](https://openalex.org/).
 ## Installation
 
 ```bash
+pip install openalexcli
+```
+
+For development:
+
+```bash
 pip install -e .
 ```
 
