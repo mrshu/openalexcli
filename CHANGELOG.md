@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2025-01-23
+
 ### Added
 
+- CHANGELOG.md following Keep a Changelog format
 - GitHub Actions workflow for automatic PyPI publishing
 
 ## [0.1.5] - 2025-01-23
@@ -57,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JSON output for piped commands
 - Polite pool support via email
 
-[Unreleased]: https://github.com/mrshu/openalexcli/compare/v0.1.5...HEAD
+[Unreleased]: https://github.com/mrshu/openalexcli/compare/v0.1.6...HEAD
+[0.1.6]: https://github.com/mrshu/openalexcli/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/mrshu/openalexcli/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/mrshu/openalexcli/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/mrshu/openalexcli/compare/v0.1.2...v0.1.3
