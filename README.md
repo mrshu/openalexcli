@@ -181,6 +181,15 @@ openalexcli search "CRISPR" --group-by authorships.institutions.id
 openalexcli author works A5023888391 --group-by open_access.is_oa
 ```
 
+## Releasing
+
+Releases are published automatically to PyPI when a version tag is pushed:
+
+```bash
+git tag v0.x.x
+git push origin v0.x.x
+```
+
 ## License
 
 MIT
