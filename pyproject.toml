@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openalexcli"
-version = "0.1.5"
+version = "0.1.6"
 description = "A CLI for OpenAlex API - designed for humans and AI agents"
 readme = "README.md"
 requires-python = ">=3.10"
