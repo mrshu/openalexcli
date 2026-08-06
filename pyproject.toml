@@ -35,7 +35,7 @@ Documentation = "https://docs.openalex.org/"
 Source = "https://github.com/mrshu/openalexcli"
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0.0", "pytest-httpx>=0.30.0"]
+dev = ["pytest>=8.0.0", "pytest-httpx>=0.30.0", "ruff>=0.1.0"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/openalexcli"]
@@ -43,3 +43,10 @@ packages = ["src/openalexcli"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]

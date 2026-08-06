@@ -5,9 +5,8 @@ from __future__ import annotations
 from typing import Any
 
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
-from rich.text import Text
+from rich.table import Table
 
 
 def _truncate(text: str, max_length: int = 60) -> str:
@@ -86,7 +85,6 @@ def format_works_table(
     if meta:
         total = meta.get("count", 0)
         page = meta.get("page", 1)
-        per_page = meta.get("per_page", 25)
         shown = len(works)
         console.print(
             f"\n[dim]Showing {shown} of {total:,} results (page {page})[/dim]"

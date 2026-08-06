@@ -7,7 +7,6 @@ import sys
 import time
 from datetime import datetime
 from typing import Any, Callable
-from urllib.parse import quote, urlencode
 
 import httpx
 
@@ -235,7 +234,10 @@ class OpenAlexAPI:
                     raise APIError(
                         message="Entity not found",
                         status_code=404,
-                        suggestion="Check the ID format. OpenAlex IDs start with W (works), A (authors), I (institutions), S (sources), etc.",
+                        suggestion=(
+                            "Check the ID format. OpenAlex IDs start with W (works), "
+                            "A (authors), I (institutions), S (sources), etc."
+                        ),
                     )
 
                 if response.status_code == 400:

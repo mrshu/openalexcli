@@ -9,21 +9,20 @@ from typing import Annotated, Optional
 import typer
 from rich.console import Console
 
-from openalexcli.api import OpenAlexAPI, APIError
+from openalexcli.api import APIError, OpenAlexAPI
 from openalexcli.formatters import (
-    format_bibtex,
-    format_works_bibtex,
-    format_json,
-    format_error_json,
-    format_works_table,
-    format_authors_table,
-    format_institutions_table,
-    format_sources_table,
-    format_groups_table,
-    format_work_detail,
     format_author_detail,
+    format_authors_table,
+    format_error_json,
+    format_groups_table,
     format_institution_detail,
+    format_institutions_table,
+    format_json,
     format_source_detail,
+    format_sources_table,
+    format_work_detail,
+    format_works_bibtex,
+    format_works_table,
 )
 
 # CLI app

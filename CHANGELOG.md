@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restructured the test suite into `test_api.py`, `test_bibtex.py` and
   `test_cli.py`, covering the API client, BibTeX formatter and CLI commands
   with `pytest-httpx` mocks (replaces the unused `pytest-mock` dev dependency)
+- CI now runs `ruff check` (E/F/I/N/W, line length 120) before the test
+  suite, matching the sibling s2cli setup
 
 ## [0.1.7] - 2025-01-23
 
