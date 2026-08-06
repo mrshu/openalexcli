@@ -154,28 +154,30 @@ def format_bibtex(work: dict[str, Any]) -> str:
             fields.append(("publisher", f"{{{_escape_latex(source_name)}}}"))
 
     # Volume, Issue, Pages from biblio
+    # Values are brace-delimited: bare (unquoted) BibTeX values must be
+    # numbers, and e.g. page ranges, DOIs and URLs are not.
     biblio = work.get("biblio", {}) or {}
     if biblio.get("volume"):
-        fields.append(("volume", str(biblio["volume"])))
+        fields.append(("volume", f"{{{biblio['volume']}}}"))
     if biblio.get("issue"):
-        fields.append(("number", str(biblio["issue"])))
+        fields.append(("number", f"{{{biblio['issue']}}}"))
     if biblio.get("first_page"):
         pages = biblio["first_page"]
         if biblio.get("last_page"):
             pages += f"--{biblio['last_page']}"
-        fields.append(("pages", pages))
+        fields.append(("pages", f"{{{pages}}}"))
 
     # DOI
     doi = work.get("doi")
     if doi:
         # Clean up DOI URL
         doi_clean = doi.replace("https://doi.org/", "")
-        fields.append(("doi", doi_clean))
+        fields.append(("doi", f"{{{doi_clean}}}"))
 
     # URL (OpenAlex URL as fallback)
     work_id = work.get("id", "")
     if work_id:
-        fields.append(("url", work_id))
+        fields.append(("url", f"{{{work_id}}}"))
 
     # Abstract
     abstract_index = work.get("abstract_inverted_index")

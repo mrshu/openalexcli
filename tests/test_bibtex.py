@@ -177,10 +177,11 @@ class TestFormatBibtex:
         assert "author = {Alice Smith and Bob Jones}" in bibtex
         assert "year = 2023" in bibtex
         assert "journal = {Nature}" in bibtex
-        assert "volume = 42" in bibtex
-        assert "pages = 1--10" in bibtex
-        assert "doi = 10.1234/test" in bibtex
-        assert "url = https://openalex.org/W123" in bibtex
+        # Non-numeric values must be brace-delimited to be valid BibTeX
+        assert "volume = {42}" in bibtex
+        assert "pages = {1--10}" in bibtex
+        assert "doi = {10.1234/test}" in bibtex
+        assert "url = {https://openalex.org/W123}" in bibtex
 
     def test_conference_paper_uses_booktitle(self):
         work = {
@@ -218,12 +219,12 @@ class TestFormatBibtex:
     def test_first_page_only(self):
         work = {"title": "T", "biblio": {"first_page": "e4375"}}
         bibtex = format_bibtex(work)
-        assert "pages = e4375" in bibtex
+        assert "pages = {e4375}" in bibtex
         assert "--" not in bibtex
 
     def test_issue_maps_to_number(self):
         work = {"title": "T", "biblio": {"issue": "3"}}
-        assert "number = 3" in format_bibtex(work)
+        assert "number = {3}" in format_bibtex(work)
 
     def test_escapes_special_chars_in_title(self):
         work = {"title": "100% Accuracy & More"}

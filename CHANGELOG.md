@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - BibTeX escaping of backslashes: the braces of the inserted
   `\textbackslash{}` macro were themselves escaped, producing invalid
   LaTeX output
+- BibTeX `volume`, `number`, `pages`, `doi` and `url` values are now
+  brace-delimited; bare values like `pages = 1--10` or
+  `doi = 10.1234/x` are invalid BibTeX and were rejected by parsers
 
 ### Changed
 
