@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Restructured the test suite into `test_api.py`, `test_bibtex.py` and
+  `test_cli.py`, covering the API client, BibTeX formatter and CLI commands
+  with `pytest-httpx` mocks (replaces the unused `pytest-mock` dev dependency)
+
 ## [0.1.7] - 2025-01-23
 
 ### Added
