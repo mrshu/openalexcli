@@ -453,6 +453,39 @@ class TestErrorHandling:
 
         assert exc.value.retry_after == 60
 
+    def test_429_with_http_date_retry_after(self, httpx_mock):
+        # Retry-After may be an HTTP date (RFC 9110), not just seconds
+        httpx_mock.add_response(
+            status_code=429,
+            headers={"Retry-After": "Wed, 21 Oct 2026 07:28:00 GMT"},
+        )
+
+        with OpenAlexAPI(max_retries=0) as api, pytest.raises(RateLimitError) as exc:
+            api.search_works(query="test")
+
+        assert exc.value.retry_after is None
+
+    def test_retry_with_http_date_retry_after_uses_backoff(self, httpx_mock):
+        httpx_mock.add_response(
+            status_code=429,
+            headers={"Retry-After": "Wed, 21 Oct 2026 07:28:00 GMT"},
+        )
+        httpx_mock.add_response(json={"id": "https://openalex.org/W123"})
+
+        import openalexcli.api.client as client_module
+
+        sleeps: list[float] = []
+        original_sleep = client_module.time.sleep
+        client_module.time.sleep = sleeps.append
+        try:
+            with OpenAlexAPI(max_retries=1, status_callback=lambda m: None) as api:
+                result = api.search_works(query="test")
+        finally:
+            client_module.time.sleep = original_sleep
+
+        assert result["id"] == "https://openalex.org/W123"
+        assert len(sleeps) == 1
+
     def test_connection_error(self, httpx_mock):
         httpx_mock.add_exception(httpx.ConnectError("boom"))
 

@@ -37,6 +37,22 @@ class APIError(Exception):
         return result
 
 
+def _parse_retry_after(response: httpx.Response) -> int | None:
+    """Parse the Retry-After header as an integer number of seconds.
+
+    Returns None when the header is missing or not an integer (e.g. the
+    HTTP-date form allowed by RFC 9110), letting callers fall back to
+    exponential backoff.
+    """
+    value = response.headers.get("Retry-After")
+    if value is None:
+        return None
+    try:
+        return int(value)
+    except ValueError:
+        return None
+
+
 class RateLimitError(APIError):
     """Rate limit exceeded error."""
 
@@ -192,10 +208,10 @@ class OpenAlexAPI:
                     return response.json()
 
                 if response.status_code == 429:
-                    retry_after = response.headers.get("Retry-After")
+                    retry_after = _parse_retry_after(response)
                     wait_time = (
-                        int(retry_after)
-                        if retry_after
+                        retry_after
+                        if retry_after is not None
                         else min(2**attempt, self.max_retry_wait)
                     )
                     # Add jitter (±25%)
@@ -213,7 +229,7 @@ class OpenAlexAPI:
                         time.sleep(wait_time)
                         continue
                     else:
-                        raise RateLimitError(retry_after=int(retry_after) if retry_after else None)
+                        raise RateLimitError(retry_after=retry_after)
 
                 if response.status_code == 404:
                     raise APIError(
