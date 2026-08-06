@@ -18,8 +18,11 @@ def _escape_latex(text: str) -> str:
     """Escape special LaTeX characters."""
     if not text:
         return ""
+    # Replace backslashes with a placeholder first so that neither the
+    # backslashes introduced by the escapes below nor the braces of the
+    # final \textbackslash{} macro get escaped again.
+    text = text.replace("\\", "\x00")
     replacements = [
-        ("\\", "\\textbackslash{}"),
         ("&", "\\&"),
         ("%", "\\%"),
         ("$", "\\$"),
@@ -32,7 +35,7 @@ def _escape_latex(text: str) -> str:
     ]
     for old, new in replacements:
         text = text.replace(old, new)
-    return text
+    return text.replace("\x00", "\\textbackslash{}")
 
 
 def _generate_citation_key(work: dict[str, Any]) -> str:

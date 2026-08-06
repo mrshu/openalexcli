@@ -42,6 +42,14 @@ class TestEscapeLatex:
     def test_tilde_and_caret(self):
         assert _escape_latex("~x^2") == r"\textasciitilde{}x\textasciicircum{}2"
 
+    def test_backslash(self):
+        # The braces of the inserted \textbackslash{} macro must not be
+        # re-escaped by the brace rules
+        assert _escape_latex(r"a\b") == r"a\textbackslash{}b"
+
+    def test_backslash_with_braces(self):
+        assert _escape_latex(r"\{x}") == r"\textbackslash{}\{x\}"
+
     def test_empty_string(self):
         assert _escape_latex("") == ""
 

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Crash (`ValueError`) when a 429 response carried a non-integer
   `Retry-After` header (e.g. the HTTP-date form allowed by RFC 9110);
   the client now falls back to exponential backoff
+- BibTeX escaping of backslashes: the braces of the inserted
+  `\textbackslash{}` macro were themselves escaped, producing invalid
+  LaTeX output
 
 ### Changed
 
